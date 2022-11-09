@@ -2,6 +2,7 @@
 
 Route::group(['prefix' => 'site', 'namespace' => 'Site', 'as' => 'site.'], function(){
     Route::get('/', 'HomeController@index')->name('site');
+    Route::post('/', 'HomeController@index')->name('search');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function(){

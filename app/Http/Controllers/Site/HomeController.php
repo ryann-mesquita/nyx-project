@@ -8,9 +8,11 @@ use App\Services\MovieapiService;
 
 class HomeController extends Controller
 {
-    public function index(MovieapiService $service){
+    public function index(MovieapiService $service, Request $request){
 
-        $movies = $service->getMovies()['results'];
+        ($request->search) ? $movie = $request->search : $movie = '';
+
+        $movies = $service->getMovies($movie)['results'];
 
         return view('site.index',  ['movies' => $movies]);
     }
