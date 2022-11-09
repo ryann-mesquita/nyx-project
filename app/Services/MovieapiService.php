@@ -17,9 +17,15 @@ class MovieapiService{
         ]);
     }
 
-    public function getMovies(){
-        $response = $this->client->request('GET', 'movie/popular?api_key='.$this->api_key.'&language=en-US&page=1');
-        $endpoints = json_decode($response->getBody()->getContents(), true);
-        return $endpoints;
+    public function getMovies($movie_name = null){
+        if($movie_name){
+            $endpoints = $this->client->request('GET', 'search/movie?query='.$movie_name.'&api_key='.$this->api_key.'&language=pt-BR&page=1');
+            $response = json_decode($endpoints->getBody()->getContents(), true);
+            return $response;
+        }
+
+        $endpoints = $this->client->request('GET', 'movie/popular?api_key='.$this->api_key.'&language=pt-BR&page=1');
+        $response = json_decode($endpoints->getBody()->getContents(), true);
+        return $response;
     }
 }
