@@ -1,5 +1,8 @@
 <?php
 
+Route::group(['prefix' => 'site', 'namespace' => 'Site', 'as' => 'site.'], function(){
+    Route::get('/', 'HomeController@index')->name('site');
+});
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function(){
 
