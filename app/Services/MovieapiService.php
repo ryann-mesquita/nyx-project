@@ -28,4 +28,10 @@ class MovieapiService{
         $response = json_decode($endpoints->getBody()->getContents(), true);
         return $response;
     }
+
+    public function getMovieById($id){
+        $endpoints = $this->client->request('GET', 'movie/'.$id.'?api_key='.$this->api_key.'&language=pt-BR&page=1');
+        $response = json_decode($endpoints->getBody()->getContents(), true);
+        return $response;
+    }
 }

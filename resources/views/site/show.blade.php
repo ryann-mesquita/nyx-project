@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <style>
-    body {
+        body {
     padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
 }
 
@@ -45,35 +45,6 @@
 	text-align: center;
 	padding: 30px 0;
 }
-
-#divBusca{
-  background-color:#E0EEEE;
-  border:solid 2px #5F9EA0;
-  border-radius:10px;
-  width:300px;
-  height:32px;
-}
-
-#txtBusca{
-  float:left;
-  background-color:transparent;
-  padding-left:5px;
-  font-size:18px;
-  border:none;
-  height:32px;
-  width:191px;
-}
-
-#btnBusca{
-  border:none;
-  float:left;
-  height:28px;
-  border-radius:0 7px 7px 0;
-  width:105px;
-  font-weight:bold;
-  background:#5F9EA0;
-}
-
 </style>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -91,14 +62,6 @@
                     Nyx Technology
                 </a>
             </div>
-
-            <form name="login" action="{{ route('site.search') }}" method="post" autocomplete="off">
-                @csrf
-                <div id="divBusca">
-                    <input type="text" name="search" id="txtBusca" placeholder="Buscar..."/>
-                    <button id="btnBusca">Buscar</button>
-                </div>
-            </form>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -133,13 +96,8 @@
                 <hr size=5>
                 </div>
             </div>
-            @if(session('mensagem'))
-                <div class="alert alert-success">
-                    <p>{{session('mensagem')}}</p>
-                </div>
-            @endif
+
             <div class="row">
-                @foreach ($movies as $movie)
                     <div class="col-6 col-md-4" style="padding: 20px;">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ 'https://image.tmdb.org/t/p/w200/'.$movie['poster_path'] }}" class="card-img-top" alt="...">
@@ -147,11 +105,28 @@
                             <h5 class="card-title">{{$movie['original_title']}}</h5>
                             <p class="card-text"><b>Ano: {{ (isset($movie['release_date'])) ? date('Y', strtotime($movie['release_date'])) : ''}}</b></p>
                             <p class="card-text">{{str_limit(strip_tags($movie['overview']), 100)}}</p>
-                            <a href="{{route('site.show', $movie['id'])}}" class="btn btn-primary">Alugar</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    <div class="col-6 col-md-8" style="padding: 20px;">
+                        <form name="login" action="{{ route('site.store') }}" method="post" autocomplete="off">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Nome</label>
+                                <input type="text" class="form-control" id="exampleInputPassword1" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                            </div>
+
+                            <input type="hidden" class="form-control" id="exampleInputPassword1" name="movie_id" value="{{$movie['id']}}">
+                            <input type="hidden" class="form-control" id="exampleInputPassword1" name="movie_name" value="{{$movie['original_title']}}">
+                            <button type="submit" class="btn btn-primary" style="margin-left: 493px;">Confirmar Aluguel</button>
+                            <a href="{{ URL::previous() }}" class="btn btn-secondary">Voltar</a>
+                        </form>
+                    </div>
             </div>
 
         </div>
