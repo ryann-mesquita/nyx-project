@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
 
     <link rel="stylesheet" href="{{ url(mix('backend/assets/css/reset.css' )) }}"/>
-    <link rel="stylesheet" href="assets/js/datatables/css/libs.css">
+    <link rel="stylesheet" href=" {{ url(mix('backend/assets/css/libs.css' )) }}">
     <link rel="stylesheet" href="{{ url(mix('backend/assets/css/boot.css' )) }}"/>
     <link rel="stylesheet" href="{{ url(mix('backend/assets/css/style.css' )) }}"/>
 
@@ -36,7 +36,7 @@
             <img class="dash_sidebar_user_thumb" src="{{ url(asset('backend/assets/images/avatar.jpg'))}}" alt="" title=""/>
 
             <h1 class="dash_sidebar_user_name">
-                <a href="">Gustavo Web</a>
+                <a href="">Nyx Technology</a>
             </h1>
         </article>
 
@@ -44,27 +44,7 @@
             <li class="dash_sidebar_nav_item {{ isActive('admin.home') }}">
                 <a class="icon-tachometer" href="{{route('admin.home')}}">Dashboard</a>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-users" href="dashboard.php?app=users/index">Clientes</a>
-                <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=users/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=companies/index">Empresas</a></li>
-                    <li class=""><a href="dashboard.php?app=users/team">Time</a></li>
-                    <li class=""><a href="dashboard.php?app=users/create">Criar Novo</a></li>
-                </ul>
-            </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-home" href="dashboard.php?app=properties/index">Imóveis</a>
-                <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=properties/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=properties/create">Criar Novo</a></li>
-                </ul>
-            </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-file-text" href="dashboard.php?app=contracts/index">Contratos</a>
-                <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=contracts/create">Criar Novo</a></li>
-                </ul>
-            </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
+            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="{{ route('site.site') }}">Ver Site</a></li>
             <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="{{ route('admin.logout') }}" target="_blank">Sair</a></li>
         </ul>
 

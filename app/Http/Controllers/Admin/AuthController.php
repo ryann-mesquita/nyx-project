@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\MovieRent;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function showLoginForm(){
+
+        $user = User::where('id', 1)->first();
+        $user->password = bcrypt('teste');
+        $user->save();
 
         if(Auth::check() === true) {
             return redirect()->route('admin.home');
@@ -19,7 +24,11 @@ class AuthController extends Controller
     }
     public function home(){
 
-        return view('admin.dashboard');
+        $movies_rented = MovieRent::orderBy('created_at', 'ASC')
+        ->get();
+
+
+        return view('admin.dashboard', ['movies_rented' => $movies_rented]);
     }
     public function login(Request $request){
         if(in_array('', $request->only('email', 'password'))){
