@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\MovieRent;
+
 use App\Services\MovieapiService;
 
 class HomeController extends Controller
@@ -17,6 +19,7 @@ class HomeController extends Controller
 
         return view('site.index',  ['movies' => $movies]);
     }
+
 
     public function show(MovieapiService $service, $id){
 

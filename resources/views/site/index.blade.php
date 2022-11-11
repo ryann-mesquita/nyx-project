@@ -133,11 +133,13 @@
                 <hr size=5>
                 </div>
             </div>
+
             @if(session('mensagem'))
                 <div class="alert alert-success">
                     <p>{{session('mensagem')}}</p>
                 </div>
             @endif
+
             <div class="row">
                 @foreach ($movies as $movie)
                     <div class="col-6 col-md-4" style="padding: 20px;">
@@ -147,7 +149,11 @@
                             <h5 class="card-title">{{$movie['original_title']}}</h5>
                             <p class="card-text"><b>Ano: {{ (isset($movie['release_date'])) ? date('Y', strtotime($movie['release_date'])) : ''}}</b></p>
                             <p class="card-text">{{str_limit(strip_tags($movie['overview']), 100)}}</p>
+
                             <a href="{{route('site.show', $movie['id'])}}" class="btn btn-primary">Alugar</a>
+
+                            <a href="#" class="btn btn-primary">Alugar</a>
+
                             </div>
                         </div>
                     </div>
