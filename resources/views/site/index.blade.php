@@ -48,7 +48,7 @@
 
 #divBusca{
   background-color:#E0EEEE;
-  border:solid 2px #5F9EA0;
+  border:solid 2px #1a75dd;
   border-radius:10px;
   width:300px;
   height:32px;
@@ -71,7 +71,8 @@
   border-radius:0 7px 7px 0;
   width:105px;
   font-weight:bold;
-  background:#5F9EA0;
+  background:#0612c0;
+  color: white
 }
 
 </style>
@@ -80,15 +81,7 @@
         <div class="container">
 
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <span class="glyphicon glyphicon-fire"></span>
-                    Nyx Technology
+                <a class="navbar-brand" href="{{ route('admin.login') }}">Login</a>">
                 </a>
             </div>
 
@@ -100,25 +93,6 @@
                 </div>
             </form>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                <li>
-                <a href="#">About</a>
-                </li>
-                <li>
-                <a href="#">Services</a>
-                </li>
-                <li class="active">
-                <a href="#">Portfolio</a>
-                </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                <li>
-                <a href="#">Contact</a>
-                </li>
-                </ul>
-            </div>
-
         </div>
 
     </nav>
@@ -128,7 +102,7 @@
             <div class="row">
                 <div class="col-lg-12">
                 <h1 class="page-header">Projeto Filmes
-                <small>Nyx</small>
+                <small> Nyx Technology</small>
                 </h1>
                 <hr size=5>
                 </div>
